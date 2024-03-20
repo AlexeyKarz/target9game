@@ -6,36 +6,71 @@ using namespace std;
 // define the grid size
 const int GRID_SIZE = 3;
 
+// define the Move class
 class Move {
 public:
     int row, col;
 };
 
+// define the error codes
+enum errorCode {underflow, overflow, success};
+
+// define the Node class
+class Node {
+public:
+    Move move{};
+    Node *next;
+    Node();
+    Node(Move newmove, Node *n);
+};
+
+Node::Node() {
+    next = nullptr;
+}
+
+Node::Node(Move newmove, Node *n) {
+    move = newmove;
+    next = n;
+}
+
+// define the class to store the moves
+class stackMoves {
+public:
+    stackMoves();
+    errorCode top(Move &move) const;
+    errorCode pop();
+    errorCode push(const Move &move);
+    bool isEmpty() const;
+    int getSize() const;
+private:
+    Node *topNode;
+};
+
+// function prototypes
+void restartGame(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled);
 void printPlayField(int grid[GRID_SIZE][GRID_SIZE]);
-void setDifficulty(int level, int grid[GRID_SIZE][GRID_SIZE]);
+void setDifficulty(int grid[GRID_SIZE][GRID_SIZE]);
 void makeMove(int grid[GRID_SIZE][GRID_SIZE], Move move);
 void makeReverseMove(int grid[GRID_SIZE][GRID_SIZE], Move move);
 void validateMove(int cellNum);
 bool victoryCheck(const int grid[GRID_SIZE][GRID_SIZE]);
-
+void undoMove(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled);
+void redoMove(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled);
 
 int main() {
 
     // initialize the grid, set all values to 9
     int grid[GRID_SIZE][GRID_SIZE] = {9, 9, 9, 9, 9, 9, 9, 9, 9};
 
-    int choice;
+    int choice; // variable to store the user's choice
+
+    // initialize the stack where the moves will be stored
+    stackMoves movesHistory;
+    // initialize the stack where the cancelled moves will be stored
+    stackMoves cancelledMoves;
 
     // set the difficulty level
-    cout << "Enter the difficulty level (1-9): ";
-    int difficulty;
-    do {
-        cin >> difficulty;
-        if (difficulty < 1 || difficulty > 9) {
-            cout << "Invalid difficulty level. Please enter a number between 1 and 9: ";
-        }
-    } while (difficulty < 1 || difficulty > 9);
-    setDifficulty(difficulty, grid);
+    setDifficulty(grid);
 
     // print the menu
     do {
@@ -63,14 +98,110 @@ int main() {
                 validateMove(move.col);
             } while (move.col < 0 || move.col > 2);
             makeMove(grid, move);
+            movesHistory.push(move); // store the move in the history stack
+            cancelledMoves = stackMoves(); // clear the cancelled moves stack after a new move
+            // check if the user has won the game and ask if they want to play again
+            if (victoryCheck(grid)) {
+                cout << "Congratulations! You have won the game!" << endl;
+                char restartChoice;
+                cout << "Do you want to play again? (y/n):";
+                cin >> restartChoice;
+                if (restartChoice == 'y' || restartChoice == 'Y') {
+                    restartGame(grid, movesHistory, cancelledMoves);
+                }
+                else {
+                    cout << "Have a good day!";
+                    exit(0);
+                }
+            }
         }
+        else if (choice == 2) {
+            if (cancelledMoves.isEmpty()) {
+                cout << "There are no moves to redo." << endl;
+            }
+            else {
+                redoMove(grid, movesHistory, cancelledMoves);
+            }
+        }
+        else if (choice == 3) {
+            if (movesHistory.isEmpty()) {
+                cout << "There are no moves to undo." << endl;
+            }
+            else {
+                undoMove(grid, movesHistory, cancelledMoves);
+            }
+        }
+
+
         else if (choice == 4) {
-            main();
+            // Restart the game
+            restartGame(grid, movesHistory, cancelledMoves);
         }
     } while (choice != 5);
 
 
     return 0;
+}
+
+// Node class methods implementation
+stackMoves::stackMoves() {
+    topNode = nullptr;
+}
+
+bool stackMoves::isEmpty() const {
+    return topNode == nullptr;
+}
+
+errorCode stackMoves::top(Move &move) const {
+    if (isEmpty()) {
+        return underflow;
+    }
+    else {
+        move = topNode->move;
+        return success;
+    }
+}
+
+errorCode stackMoves::pop() {
+    if (isEmpty()) {
+        return underflow;
+    }
+    else {
+        Node *temp = topNode;
+        topNode = topNode->next;
+        delete temp;
+        return success;
+    }
+}
+
+errorCode stackMoves::push(const Move &move) {
+    Node *temp = new(nothrow) Node(move, topNode);
+    if (temp == nullptr) {
+        return overflow;
+    }
+    topNode = temp;
+    return success;
+}
+
+int stackMoves::getSize() const {
+    int count = 0;
+    Node *temp = topNode;
+    while (temp != nullptr) {
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
+
+void restartGame(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled) {
+    for (int i = 0; i < GRID_SIZE; i++) {
+        for (int j = 0; j < GRID_SIZE; j++) {
+            grid[i][j] = 9;
+        }
+    }
+    setDifficulty(grid);
+    history = stackMoves();
+    canceled = stackMoves();
 }
 
 void printPlayField(int grid[GRID_SIZE][GRID_SIZE]) {
@@ -82,9 +213,18 @@ void printPlayField(int grid[GRID_SIZE][GRID_SIZE]) {
     }
 }
 
-void setDifficulty(const int level, int grid[GRID_SIZE][GRID_SIZE]) {
+void setDifficulty(int grid[GRID_SIZE][GRID_SIZE]) {
+    cout << "Enter the difficulty level (1-9): ";
+    int difficulty;
+    do {
+        cin >> difficulty;
+        if (difficulty < 1 || difficulty > 9) {
+            cout << "Invalid difficulty level. Please enter a number between 1 and 9: ";
+        }
+    } while (difficulty < 1 || difficulty > 9);
+
     srand(time(nullptr));
-    for (int i = 0; i < level; i++) {
+    for (int i = 0; i < difficulty; i++) {
         int row = rand() % 3;
         int col = rand() % 3;
         Move move{};
@@ -105,19 +245,6 @@ void makeMove(int grid[GRID_SIZE][GRID_SIZE], const Move move) {
                     grid[i][j]++;
                 }
             }
-        }
-    }
-    if (victoryCheck(grid)) {
-        cout << "Congratulations! You have won the game!" << endl;
-        char choice;
-        cout << "Do you want to play again? (y/n):";
-        cin >> choice;
-        if (choice == 'y' || choice == 'Y') {
-            main();
-        }
-        else {
-            cout << "Goodbye!";
-            exit(0);
         }
     }
 }
@@ -155,4 +282,20 @@ bool victoryCheck(const int grid[GRID_SIZE][GRID_SIZE]) {
         }
     }
     return win;
+}
+
+void undoMove(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled) {
+    Move move{};
+    history.top(move);
+    makeReverseMove(grid, move);
+    canceled.push(move);
+    history.pop();
+}
+
+void redoMove(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled) {
+    Move move{};
+    canceled.top(move);
+    makeMove(grid, move);
+    history.push(move);
+    canceled.pop();
 }
