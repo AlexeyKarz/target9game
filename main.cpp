@@ -1,3 +1,19 @@
+/**
+ * \file main.cpp
+ * \title Target 9 Game
+ * \brief The program contains the source code for the "Target 9" Game.
+ * \details The game starts with an initial configuration of digits that is set on
+ * the difficulty level selected by the user and the user’s target is to change all of them
+ * to 9 in the minimum number of moves. The interaction with the game is done through the menu
+ * in the command line, which allows to make moves using row and column indexes. undo and redo moves,
+ * start a new game or finish the game.
+ * \author Aleksei Karzanov
+ * \version   1.0.0
+ * \date      03/2024-04/2024
+ * \copyright University of Nicosia.
+*/
+
+// include the necessary libraries
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
@@ -6,7 +22,12 @@ using namespace std;
 // define the grid size
 const int GRID_SIZE = 3;
 
-// define the Move class
+/**
+ * The Move class stores the row and column of the move
+ * @author: Aleksei Karzanov
+ * @version: 1.0.0
+ * @since: 1.0.0
+ */
 class Move {
 public:
     int row, col;
@@ -15,7 +36,12 @@ public:
 // define the error codes
 enum errorCode {underflow, overflow, success};
 
-// define the Node class
+/**
+ * The Node class that allows to connect moves as a linked stack
+ * @author: Aleksei Karzanov
+ * @version: 1.0.0
+ * @since: 1.0.0
+ */
 class Node {
 public:
     Move move{};
@@ -24,39 +50,39 @@ public:
     Node(Move newmove, Node *n);
 };
 
-Node::Node() {
-    next = nullptr;
-}
-
-Node::Node(Move newmove, Node *n) {
-    move = newmove;
-    next = n;
-}
-
-// define the class to store the moves
-class stackMoves {
+/**
+ * The StackMoves class that allows to store the moves in a linked stack
+ * @author: Aleksei Karzanov
+ * @version: 1.0.0
+ * @since: 1.0.0
+ */
+class StackMoves {
 public:
-    stackMoves();
+    StackMoves();
     errorCode top(Move &move) const;
     errorCode pop();
     errorCode push(const Move &move);
     bool isEmpty() const;
-    int getSize() const;
 private:
     Node *topNode;
 };
 
 // function prototypes
-void restartGame(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled);
+void restartGame(int grid[GRID_SIZE][GRID_SIZE], StackMoves &history, StackMoves &canceled);
 void printPlayField(int grid[GRID_SIZE][GRID_SIZE]);
 void setDifficulty(int grid[GRID_SIZE][GRID_SIZE]);
 void makeMove(int grid[GRID_SIZE][GRID_SIZE], Move move);
 void makeReverseMove(int grid[GRID_SIZE][GRID_SIZE], Move move);
-void validateMove(int cellNum);
+bool validateMove(int cellNum);
 bool victoryCheck(const int grid[GRID_SIZE][GRID_SIZE]);
-void undoMove(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled);
-void redoMove(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled);
+void undoMove(int grid[GRID_SIZE][GRID_SIZE], StackMoves &history, StackMoves &canceled);
+void redoMove(int grid[GRID_SIZE][GRID_SIZE], StackMoves &history, StackMoves &canceled);
 
+/**
+ * Function <code>main</code> is the entry point of the program
+ * <BR>
+ * @return 0 if the program executed successfully
+ */
 int main() {
 
     // initialize the grid, set all values to 9
@@ -65,14 +91,14 @@ int main() {
     int choice; // variable to store the user's choice
 
     // initialize the stack where the moves will be stored
-    stackMoves movesHistory;
+    StackMoves movesHistory;
     // initialize the stack where the cancelled moves will be stored
-    stackMoves cancelledMoves;
+    StackMoves cancelledMoves;
 
     // set the difficulty level
     setDifficulty(grid);
 
-    // print the menu
+    // print the play field and the menu
     do {
         cout << "The play field: " << endl;
         printPlayField(grid);
@@ -85,22 +111,23 @@ int main() {
         cout << "\nEnter the choice: ";
         cin >> choice;
 
-        if (choice == 1) {
+        if (choice == 1) { // make a move
             Move move{};
+            // ask the user to enter the row and column
             cout << "Enter the row (0-2): ";
             do {
                 cin >> move.row;
                 validateMove(move.row);
-            } while (move.row < 0 || move.row > 2);
+            } while (!validateMove(move.row));
             cout << "Enter the column (0-2): ";
             do {
                 cin >> move.col;
-                validateMove(move.col);
-            } while (move.col < 0 || move.col > 2);
+            } while (!validateMove(move.row));
             makeMove(grid, move);
             movesHistory.push(move); // store the move in the history stack
-            cancelledMoves = stackMoves(); // clear the cancelled moves stack after a new move
-            // check if the user has won the game and ask if they want to play again
+            // making the move means that the cancelled moves stack should be cleared
+            cancelledMoves = StackMoves();
+            // check if the user has won the game and if they did, ask if they want to play again
             if (victoryCheck(grid)) {
                 cout << "Congratulations! You have won the game!" << endl;
                 char restartChoice;
@@ -115,7 +142,8 @@ int main() {
                 }
             }
         }
-        else if (choice == 2) {
+        else if (choice == 2) { // redo the move
+            // check if there are any moves to redo
             if (cancelledMoves.isEmpty()) {
                 cout << "There are no moves to redo." << endl;
             }
@@ -123,7 +151,8 @@ int main() {
                 redoMove(grid, movesHistory, cancelledMoves);
             }
         }
-        else if (choice == 3) {
+        else if (choice == 3) { // undo the move
+            // check if there are any moves to undo
             if (movesHistory.isEmpty()) {
                 cout << "There are no moves to undo." << endl;
             }
@@ -131,28 +160,48 @@ int main() {
                 undoMove(grid, movesHistory, cancelledMoves);
             }
         }
-
-
-        else if (choice == 4) {
-            // Restart the game
+        else if (choice == 4) { // restart the game
             restartGame(grid, movesHistory, cancelledMoves);
         }
     } while (choice != 5);
 
-
     return 0;
 }
 
-// Node class methods implementation
-stackMoves::stackMoves() {
+// Node class constructor
+Node::Node() {
+    next = nullptr;
+}
+
+// Node class second constructor that takes Move instance and the pointer as arguments
+Node::Node(Move newmove, Node *n) {
+    move = newmove;
+    next = n;
+}
+
+// StackMoves constructor
+StackMoves::StackMoves() {
     topNode = nullptr;
 }
 
-bool stackMoves::isEmpty() const {
+/**
+ * Function <code>isEmpty</code> checks whether the stack is empty
+ * <BR>
+ * @return Returns <code>true</code> if the stack is empty,
+ * <code>false</code> otherwise.
+*/
+bool StackMoves::isEmpty() const {
     return topNode == nullptr;
 }
 
-errorCode stackMoves::top(Move &move) const {
+/**
+ * Function <code>top</code> stores the top element in the stack into the passed variable
+ * <BR>
+ * @param move the Move class instance passed by variable
+ * @return Returns <code>true</code> if the stack is empty,
+ * <code>false</code> otherwise.
+*/
+errorCode StackMoves::top(Move &move) const {
     if (isEmpty()) {
         return underflow;
     }
@@ -162,7 +211,13 @@ errorCode stackMoves::top(Move &move) const {
     }
 }
 
-errorCode stackMoves::pop() {
+/**
+ * Function <code>pop</code> deletes the last Move from the stack
+ * <BR>
+ * @return Returns <code>true</code> if the stack is emtpty,
+ * <code>false</code> otherwise.
+*/
+errorCode StackMoves::pop() {
     if (isEmpty()) {
         return underflow;
     }
@@ -174,7 +229,14 @@ errorCode stackMoves::pop() {
     }
 }
 
-errorCode stackMoves::push(const Move &move) {
+/**
+ * Function <code>push</code> pushes a Move into the stack
+ * <BR>
+ * @param Move the Move class instance passed by variable
+ * @return Returns <code>overflow</code> if the stack is full,
+ * <code>success</code> otherwise.
+*/
+errorCode StackMoves::push(const Move &move) {
     Node *temp = new(nothrow) Node(move, topNode);
     if (temp == nullptr) {
         return overflow;
@@ -183,27 +245,31 @@ errorCode stackMoves::push(const Move &move) {
     return success;
 }
 
-int stackMoves::getSize() const {
-    int count = 0;
-    Node *temp = topNode;
-    while (temp != nullptr) {
-        count++;
-        temp = temp->next;
-    }
-    return count;
-}
-
-void restartGame(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled) {
+/**
+ * Function <code>restartGame</code> restarts the game by resetting all the parameters
+ * <BR>
+ * @param grid the play field
+ * @param history stack that stores moves history
+ * @param canceled stack that stores the canceled moves
+ */
+void restartGame(int grid[GRID_SIZE][GRID_SIZE], StackMoves &history, StackMoves &canceled) {
     for (int i = 0; i < GRID_SIZE; i++) {
         for (int j = 0; j < GRID_SIZE; j++) {
             grid[i][j] = 9;
         }
     }
+    // set the difficulty level
     setDifficulty(grid);
-    history = stackMoves();
-    canceled = stackMoves();
+    // clear the history and canceled moves stacks
+    history = StackMoves();
+    canceled = StackMoves();
 }
 
+/**
+ * Function <code>printPlayField</code> prints the play field
+ * <BR>
+ * @param grid the play field, two-dimensional array 3x3
+ */
 void printPlayField(int grid[GRID_SIZE][GRID_SIZE]) {
     for (int i = 0; i < GRID_SIZE; i++) {
         for (int j = 0; j < GRID_SIZE; j++) {
@@ -213,6 +279,12 @@ void printPlayField(int grid[GRID_SIZE][GRID_SIZE]) {
     }
 }
 
+/**
+ * Function <code>setDifficulty</code> sets the difficulty level of the game
+ * <BR>
+ * by making a number of random moves defined by the user's input
+ * @param grid the play field, two-dimensional array 3x3
+ */
 void setDifficulty(int grid[GRID_SIZE][GRID_SIZE]) {
     cout << "Enter the difficulty level (1-9): ";
     int difficulty;
@@ -225,15 +297,23 @@ void setDifficulty(int grid[GRID_SIZE][GRID_SIZE]) {
 
     srand(time(nullptr));
     for (int i = 0; i < difficulty; i++) {
+        // randomize the row and column
         int row = rand() % 3;
         int col = rand() % 3;
         Move move{};
         move.row = row;
         move.col = col;
+        // make a "reversed" random move
         makeReverseMove(grid, move);
     }
 }
 
+/**
+ * Function <code>makeMove</code> makes a move on the play field by incrementing the values
+ * <BR>
+ * @param grid the play field, two-dimensional array 3x3
+ * @param move the Move class instance, the move to be made
+ */
 void makeMove(int grid[GRID_SIZE][GRID_SIZE], const Move move) {
     for (int i = 0; i < GRID_SIZE; i++) {
         for (int j = 0; j < GRID_SIZE; j++) {
@@ -249,6 +329,12 @@ void makeMove(int grid[GRID_SIZE][GRID_SIZE], const Move move) {
     }
 }
 
+/**
+ * Function <code>makeReverseMove</code> makes a reverse move on the play field by decrementing the values
+ * <BR>
+ * @param grid the play field, two-dimensional array 3x3
+ * @param move the Move class instance, the move to be made
+ */
 void makeReverseMove(int grid[GRID_SIZE][GRID_SIZE], const Move move) {
     for (int i = 0; i < GRID_SIZE; i++) {
         for (int j = 0; j < GRID_SIZE; j++) {
@@ -265,12 +351,30 @@ void makeReverseMove(int grid[GRID_SIZE][GRID_SIZE], const Move move) {
 
 }
 
-void validateMove(const int cellNum) {
+/**
+ * Function <code>validateMove</code> checks whether the move is valid
+ * <BR>
+ * @param cellNum the number of the cell
+ * @return Returns <code>true</code> if the move is valid,
+ * <code>false</code> otherwise.
+*/
+bool validateMove(const int cellNum) {
     if (cellNum < 0 || cellNum > 2) {
         cout << "Invalid cell number. Please enter a number between 0 and 2: ";
+        return false;
+    }
+    else {
+        return true;
     }
 }
 
+/**
+ * Function <code>victoryCheck</code> checks whether the user has won the game
+ * <BR>
+ * @param grid the play field, two-dimensional array 3x3
+ * @return Returns <code>true</code> if the user has won the game,
+ * <code>false</code> otherwise.
+*/
 bool victoryCheck(const int grid[GRID_SIZE][GRID_SIZE]) {
     bool win = true;
     for (int i = 0; i < GRID_SIZE; i++) {
@@ -284,7 +388,15 @@ bool victoryCheck(const int grid[GRID_SIZE][GRID_SIZE]) {
     return win;
 }
 
-void undoMove(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled) {
+/**
+ * Function <code>undoMove</code> undoes the last move by making a reverse move taken
+ * from the history stack and pushing it to the canceled moves stack
+ * <BR>
+ * @param grid the play field, two-dimensional array 3x3
+ * @param history stack that stores moves history passed by reference
+ * @param canceled stack that stores the canceled moves passed by reference
+ */
+void undoMove(int grid[GRID_SIZE][GRID_SIZE], StackMoves &history, StackMoves &canceled) {
     Move move{};
     history.top(move);
     makeReverseMove(grid, move);
@@ -292,7 +404,15 @@ void undoMove(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &c
     history.pop();
 }
 
-void redoMove(int grid[GRID_SIZE][GRID_SIZE], stackMoves &history, stackMoves &canceled) {
+/**
+ * Function <code>redoMove</code> redoes the last move by making a move taken
+ * from the canceled moves stack and pushing it to the history stack
+ * <BR>
+ * @param grid the play field, two-dimensional array 3x3
+ * @param history stack that stores moves history passed by reference
+ * @param canceled stack that stores the canceled moves passed by reference
+ */
+void redoMove(int grid[GRID_SIZE][GRID_SIZE], StackMoves &history, StackMoves &canceled) {
     Move move{};
     canceled.top(move);
     makeMove(grid, move);
