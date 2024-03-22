@@ -8,7 +8,7 @@
  * in the command line, which allows to make moves using row and column indexes. undo and redo moves,
  * start a new game or finish the game.
  * \author Aleksei Karzanov
- * \version   1.0.0
+ * \version   1.0.1
  * \date      03/2024-04/2024
  * \copyright University of Nicosia.
 */
@@ -113,16 +113,33 @@ int main() {
 
         if (choice == 1) { // make a move
             Move move{};
+            bool validMove = false; // variable to store the move validation
             // ask the user to enter the row and column
             cout << "Enter the row (0-2): ";
             do {
                 cin >> move.row;
-                validateMove(move.row);
-            } while (!validateMove(move.row));
+                if (!cin) { // check if the user entered a character
+                    cin.clear();
+                    cin.ignore(32767, '\n');
+                    cout << "Invalid input. Please enter a number between 0 and 2: ";
+                }
+                else {
+                    validMove = validateMove(move.row);
+                }
+            } while (!validMove);
             cout << "Enter the column (0-2): ";
+            validMove = false; // reset the variable
             do {
                 cin >> move.col;
-            } while (!validateMove(move.row));
+                if (!cin) { // check if the user entered a character
+                    cin.clear();
+                    cin.ignore(32767, '\n');
+                    cout << "Invalid input. Please enter a number between 0 and 2: ";
+                }
+                else {
+                    validMove = validateMove(move.col);
+                }
+            } while (!validMove);
             makeMove(grid, move);
             movesHistory.push(move); // store the move in the history stack
             // making the move means that the cancelled moves stack should be cleared
@@ -162,6 +179,15 @@ int main() {
         }
         else if (choice == 4) { // restart the game
             restartGame(grid, movesHistory, cancelledMoves);
+        }
+        else if (choice == 5) { // quit the game
+            cout << "Have a good day!" << endl;
+        }
+        else {
+            cout << "Invalid choice. Please enter a number between 1 and 5." << endl;
+            // clear the input buffer in case the user entered a character
+            cin.clear();
+            cin.ignore(32767, '\n');
         }
     } while (choice != 5);
 
@@ -292,6 +318,9 @@ void setDifficulty(int grid[GRID_SIZE][GRID_SIZE]) {
         cin >> difficulty;
         if (difficulty < 1 || difficulty > 9) {
             cout << "Invalid difficulty level. Please enter a number between 1 and 9: ";
+            // clear the input buffer in case the user entered a character
+            cin.clear();
+            cin.ignore(32767, '\n');
         }
     } while (difficulty < 1 || difficulty > 9);
 
@@ -359,12 +388,12 @@ void makeReverseMove(int grid[GRID_SIZE][GRID_SIZE], const Move move) {
  * <code>false</code> otherwise.
 */
 bool validateMove(const int cellNum) {
-    if (cellNum < 0 || cellNum > 2) {
-        cout << "Invalid cell number. Please enter a number between 0 and 2: ";
-        return false;
+    if (cellNum >= 0 && cellNum <= 2) {
+        return true;
     }
     else {
-        return true;
+        cout << "Invalid input. Please enter a number between 0 and 2: ";
+        return false;
     }
 }
 
