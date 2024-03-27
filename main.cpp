@@ -222,9 +222,12 @@ int main() {
             for (const Move& move : solution) {
                 cout << "Row: " << move.row << ", Column: " << move.col << endl;
                 makeMove(grid, move);
+                movesHistory.push(move); // store the move in the history stack
                 printPlayField(grid);
                 cout << "----------------" << endl;
             }
+            // making the moves means that the cancelled moves stack should be cleared
+            cancelledMoves = StackMoves();
         }
         else if (choice == 6) { // quit the game
             cout << "Have a good day!" << endl;
