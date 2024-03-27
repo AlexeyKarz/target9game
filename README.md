@@ -9,7 +9,6 @@ The Target 9 Game is a command-line based game developed in C++. The game starts
 ### Prerequisites
 
 - A C++ compiler (GCC recommended)
-- Basic knowledge of C++ programming
 
 ### Installation
 
@@ -21,23 +20,6 @@ The Target 9 Game is a command-line based game developed in C++. The game starts
 ## Usage
 
 The game starts by asking the user to set the difficulty level. The difficulty level determines the number of random moves made at the beginning of the game. The user can then make moves, undo moves, redo moves, restart the game, or quit the game through the command-line menu.
-
-## Code Structure
-
-The code is structured into several classes and functions:
-
-- `Move` class: Stores the row and column of the move.
-- `Node` class: Allows to connect moves as a linked stack.
-- `StackMoves` class: Allows to store the moves in a linked stack.
-- `restartGame` function: Restarts the game by resetting all the parameters.
-- `printPlayField` function: Prints the play field.
-- `setDifficulty` function: Sets the difficulty level of the game.
-- `makeMove` function: Makes a move on the play field by incrementing the values.
-- `makeReverseMove` function: Makes a reverse move on the play field by decrementing the values.
-- `validateMove` function: Checks whether the move is valid.
-- `victoryCheck` function: Checks whether the user has won the game.
-- `undoMove` function: Undoes the last move.
-- `redoMove` function: Redoes the last move.
 
 ## Contributing
 
@@ -53,4 +35,4 @@ Aleksei Karzanov - [GitHub](https://github.com/AlexeyKarz)
 
 ## Acknowledgements
 
-- University of Nicosia
+- The game was created by Dr Andreas Savva, the professor in the University of Nicosia.
