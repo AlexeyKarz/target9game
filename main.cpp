@@ -8,7 +8,7 @@
  * in the command line, which allows to make moves using row and column indexes. undo and redo moves,
  * start a new game or finish the game.
  * \author Aleksei Karzanov
- * \version   1.0.1
+ * \version   1.1.0
  * \date      03/2024-04/2024
  * \copyright University of Nicosia.
 */
@@ -17,6 +17,9 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <vector>
+#include <queue>
+#include <set>
 using namespace std;
 
 // define the grid size
@@ -25,12 +28,14 @@ const int GRID_SIZE = 3;
 /**
  * The Move class stores the row and column of the move
  * @author: Aleksei Karzanov
- * @version: 1.0.0
+ * @version: 1.1.0
  * @since: 1.0.0
  */
 class Move {
 public:
     int row, col;
+    Move();
+    Move(int r, int c);
 };
 
 // define the error codes
@@ -67,7 +72,34 @@ private:
     Node *topNode;
 };
 
+/**
+ * The GameState struct that stores the current state of the game
+ * @author: Aleksei Karzanov
+ * @version: 1.0.0
+ * @since: 1.1.0
+ */
+struct GameState {
+    int grid[GRID_SIZE][GRID_SIZE]{};
+    // vector to store the moves that lead to the current state
+    vector<Move> moves;
+
+    // Custom comparison for GameState to work in a set
+    bool operator<(const GameState& rhs) const {
+        for (int i = 0; i < GRID_SIZE; ++i) {
+            for (int j = 0; j < GRID_SIZE; ++j) {
+                /* Compare the grid values and return true if the current grid is
+                 * less than the right-hand side grid, otherwise return false */
+                if (this->grid[i][j] != rhs.grid[i][j]) return this->grid[i][j] < rhs.grid[i][j];
+            }
+        }
+        // If the grids are equal, return false
+        return false;
+    }
+};
+
 // function prototypes
+void copyGrid(int source[GRID_SIZE][GRID_SIZE], int destination[GRID_SIZE][GRID_SIZE]);
+vector<Move> solveGame(int initialGrid[GRID_SIZE][GRID_SIZE]);
 void restartGame(int grid[GRID_SIZE][GRID_SIZE], StackMoves &history, StackMoves &canceled);
 void printPlayField(int grid[GRID_SIZE][GRID_SIZE]);
 void setDifficulty(int grid[GRID_SIZE][GRID_SIZE]);
@@ -107,7 +139,8 @@ int main() {
         cout << "\n2) Redo the move";
         cout << "\n3) Undo the move";
         cout << "\n4) Restart the game";
-        cout << "\n5) Quit the game.";
+        cout << "\n5) Solve the game.";
+        cout << "\n6) Exit the game.";
         cout << "\nEnter the choice: ";
         cin >> choice;
 
@@ -180,7 +213,20 @@ int main() {
         else if (choice == 4) { // restart the game
             restartGame(grid, movesHistory, cancelledMoves);
         }
-        else if (choice == 5) { // quit the game
+        else if (choice == 5) { // solve the game
+            vector<Move> solution = solveGame(grid);
+            // print minimum number of moves to solve the game
+            cout << "Please wait while the game is being solved..." << endl;
+            cout << "Minimum number of moves to solve the game: " << solution.size() << endl;
+            cout << "Solution: " << endl;
+            for (const Move& move : solution) {
+                cout << "Row: " << move.row << ", Column: " << move.col << endl;
+                makeMove(grid, move);
+                printPlayField(grid);
+                cout << "----------------" << endl;
+            }
+        }
+        else if (choice == 6) { // quit the game
             cout << "Have a good day!" << endl;
         }
         else {
@@ -189,9 +235,21 @@ int main() {
             cin.clear();
             cin.ignore(32767, '\n');
         }
-    } while (choice != 5);
+    } while (choice != 6);
 
     return 0;
+}
+
+// Move class constructor
+Move::Move() {
+    row = 0;
+    col = 0;
+}
+
+// Move class second constructor that takes row and column as arguments
+Move::Move(int r, int c) {
+    row = r;
+    col = c;
 }
 
 // Node class constructor
@@ -337,6 +395,17 @@ void setDifficulty(int grid[GRID_SIZE][GRID_SIZE]) {
     }
 }
 
+/** Function <code>copyGrid</code> copies the source grid to the destination grid
+ * <BR>
+ * @param source the source grid, two-dimensional array 3x3
+ * @param destination the destination grid, two-dimensional array 3x3
+ */
+void copyGrid(int source[GRID_SIZE][GRID_SIZE], int destination[GRID_SIZE][GRID_SIZE]) {
+    for (int i = 0; i < GRID_SIZE; ++i)
+        for (int j = 0; j < GRID_SIZE; ++j)
+            destination[i][j] = source[i][j];
+}
+
 /**
  * Function <code>makeMove</code> makes a move on the play field by incrementing the values
  * <BR>
@@ -356,6 +425,51 @@ void makeMove(int grid[GRID_SIZE][GRID_SIZE], const Move move) {
             }
         }
     }
+}
+
+/** Function <code>solveGame</code> solves the game by finding the minimum combination of moves.
+ * The function uses the Breadth-First Search algorithm to find the solution.
+ * <BR>
+ * @param initialGrid the initial play field, two-dimensional array 3x3
+ * @return Returns a vector of moves that solve the game
+ */
+vector<Move> solveGame(int initialGrid[GRID_SIZE][GRID_SIZE]) {
+    // Define the queue and the visited set
+    queue<GameState> q;
+    set<GameState> visited;
+
+    GameState initial;
+    // Copy the initial grid to the GameState struct and push it to the queue
+    copyGrid(initialGrid, initial.grid);
+    q.push(initial);
+
+    // Perform the Breadth-First Search
+    while (!q.empty()) {
+        GameState current = q.front(); q.pop();
+
+        // Check if the current state is a solution and return the moves if it is
+        if (victoryCheck(current.grid)) return current.moves;
+
+        // Generate all possible moves from the current state
+        if (visited.find(current) == visited.end()) {
+            visited.insert(current);
+            for (int row = 0; row < GRID_SIZE; ++row) {
+                for (int col = 0; col < GRID_SIZE; ++col) {
+                    GameState newState = current;
+                    Move move;
+                    move.row = row;
+                    move.col = col;
+                    makeMove(newState.grid, move);
+                    newState.moves.push_back(Move(row, col));
+                    // If the new state is not visited, push it to the queue
+                    if (visited.find(newState) == visited.end()) {
+                        q.push(newState);
+                    }
+                }
+            }
+        }
+    }
+    return {}; // Return an empty list if no solution is found
 }
 
 /**
@@ -405,16 +519,14 @@ bool validateMove(const int cellNum) {
  * <code>false</code> otherwise.
 */
 bool victoryCheck(const int grid[GRID_SIZE][GRID_SIZE]) {
-    bool win = true;
     for (int i = 0; i < GRID_SIZE; i++) {
         for (int j = 0; j < GRID_SIZE; j++) {
             if (grid[i][j] != 9) {
-                win = false;
-                break;
+                return false;
                 }
         }
     }
-    return win;
+    return true;
 }
 
 /**
