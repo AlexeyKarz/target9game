@@ -20,6 +20,7 @@
 #include <vector>
 #include <queue>
 #include <set>
+#include <chrono>
 using namespace std;
 
 // define the grid size
@@ -97,9 +98,16 @@ struct GameState {
     }
 };
 
-// function prototypes
+// function prototypes for auto solving the game using BFS
 void copyGrid(int source[GRID_SIZE][GRID_SIZE], int destination[GRID_SIZE][GRID_SIZE]);
-vector<Move> solveGame(int initialGrid[GRID_SIZE][GRID_SIZE]);
+vector<Move> solveGameBFS(int grid[GRID_SIZE][GRID_SIZE]);
+
+// function prototypes for auto solving the game using Strategy
+int calculateCellSum(int grid[GRID_SIZE][GRID_SIZE], int row, int col);
+Move findNextMove(int grid[GRID_SIZE][GRID_SIZE]);
+vector<Move> solveGameStrategy(int grid[GRID_SIZE][GRID_SIZE]);
+
+// function prototypes for the game
 void restartGame(int grid[GRID_SIZE][GRID_SIZE], StackMoves &history, StackMoves &canceled);
 void printPlayField(int grid[GRID_SIZE][GRID_SIZE]);
 void setDifficulty(int grid[GRID_SIZE][GRID_SIZE]);
@@ -214,9 +222,24 @@ int main() {
             restartGame(grid, movesHistory, cancelledMoves);
         }
         else if (choice == 5) { // solve the game
-            vector<Move> solution = solveGame(grid);
-            // print minimum number of moves to solve the game
             cout << "Please wait while the game is being solved..." << endl;
+            vector<Move> solution;
+            /* Strategy only works if the game is in the initial state
+             * (set by the difficulty level) and the history stack is empty */
+            if (movesHistory.isEmpty()) {
+                // use the strategy heuristic search to solve the game
+                solution = solveGameStrategy(grid);
+
+            }
+            else {
+                /* use exhaustive search (BFS) to solve the game
+                 * this method is slow, count time taken to solve the game */
+                chrono::steady_clock::time_point begin = chrono::steady_clock::now();
+                solution = solveGameBFS(grid);
+                chrono::steady_clock::time_point end = chrono::steady_clock::now();
+                cout << "Time taken to solve the game: " << chrono::duration_cast<chrono::milliseconds>(end - begin).count() << " ms" << endl;
+            }
+            // print minimum number of moves to solve the game
             cout << "Minimum number of moves to solve the game: " << solution.size() << endl;
             cout << "Solution: " << endl;
             for (const Move& move : solution) {
@@ -433,17 +456,17 @@ void makeMove(int grid[GRID_SIZE][GRID_SIZE], const Move move) {
 /** Function <code>solveGame</code> solves the game by finding the minimum combination of moves.
  * The function uses the Breadth-First Search algorithm to find the solution.
  * <BR>
- * @param initialGrid the initial play field, two-dimensional array 3x3
+ * @param grid the initial play field, two-dimensional array 3x3
  * @return Returns a vector of moves that solve the game
  */
-vector<Move> solveGame(int initialGrid[GRID_SIZE][GRID_SIZE]) {
+vector<Move> solveGameBFS(int grid[GRID_SIZE][GRID_SIZE]) {
     // Define the queue and the visited set
     queue<GameState> q;
     set<GameState> visited;
 
     GameState initial;
     // Copy the initial grid to the GameState struct and push it to the queue
-    copyGrid(initialGrid, initial.grid);
+    copyGrid(grid, initial.grid);
     q.push(initial);
 
     // Perform the Breadth-First Search
@@ -473,6 +496,71 @@ vector<Move> solveGame(int initialGrid[GRID_SIZE][GRID_SIZE]) {
         }
     }
     return {}; // Return an empty list if no solution is found
+}
+
+/**
+ * Function <code>calculateCellSum</code> calculates the sum of the values
+ * in the same row and column as the cell selected
+ * <BR>
+ * @param grid the play field, two-dimensional array 3x3
+ * @param row the row index
+ * @param col the column index
+ * @return Returns the sum of the cell values
+ */
+int calculateCellSum(int grid[GRID_SIZE][GRID_SIZE], int row, int col) {
+    int sum = 0;
+    for (int i = 0; i< GRID_SIZE; i++) {
+        sum += grid[row][i];
+        sum += grid[i][col];
+    }
+    // subtract the cell value to avoid double counting
+    sum -= grid[row][col];
+    return sum;
+}
+
+/**
+ * Function <code>findNextMove</code> finds the next move based on the strategy
+ * <BR>
+ * @param grid the play field, two-dimensional array 3x3
+ * @return Returns the Move class instance, the next move
+ */
+Move findNextMove(int grid[GRID_SIZE][GRID_SIZE]) {
+    int minSum = 9*9; // set to the maximum possible sum
+    int cellSum;
+    Move nextMove;
+
+    for (int i = 0; i < GRID_SIZE; i++) {
+        for (int j = 0; j < GRID_SIZE; j++) {
+            cellSum = calculateCellSum(grid, i, j);
+            if (cellSum < minSum) {
+                minSum = cellSum;
+                nextMove.row = i;
+                nextMove.col = j;
+            }
+        }
+    }
+    return nextMove;
+}
+
+/**
+ * Function <code>solveGameStrategy</code> solves the game by finding the minimum combination of moves.
+ * The function uses the Strategy algorithm to find the solution: The next move is applied to the cell,
+ * that has the smallest sum of the values in the row and column.
+ * <BR>
+ * @param grid the initial play field, two-dimensional array 3x3
+ * @return Returns a vector of moves that solve the game
+ */
+vector<Move> solveGameStrategy(int grid[GRID_SIZE][GRID_SIZE]) {
+    vector<Move> solution;
+    int tempGrid[GRID_SIZE][GRID_SIZE];
+    copyGrid(grid, tempGrid);
+
+    while (!victoryCheck(tempGrid)) {
+        Move nextMove = findNextMove(tempGrid);
+        solution.push_back(nextMove);
+        makeMove(tempGrid, nextMove);
+    }
+    return solution;
 }
 
 /**
@@ -563,3 +651,4 @@ void redoMove(int grid[GRID_SIZE][GRID_SIZE], StackMoves &history, StackMoves &c
     history.push(move);
     canceled.pop();
 }
+
