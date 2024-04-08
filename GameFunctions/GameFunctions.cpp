@@ -1,8 +1,12 @@
-//
-// Created by Karzanov Alexey on 08.04.2024.
-//
+/** \file
+ *  \brief Implementation file for the game functions.
+ *  Contains the implementation of the game functions.
+ *  \author Aleksei Karzanov
+ *  \version 1.0
+ *  \date 2024
+ */
 
-#include "ClassesStack.h"
+#include "../ClassesStack/ClassesStack.h"
 #include <iostream>
 using namespace std;
 

@@ -1,6 +1,10 @@
-//
-// Created by Karzanov Alexey on 08.04.2024.
-//
+/** \file ClassesStack.cpp
+ *  \brief Header file for the game functions.
+ *  Contains the function prototypes for the game functions.
+ *  \author Aleksei Karzanov
+ *  \version 1.0
+ *  \date 2024
+ */
 
 #include "ClassesStack.h"
 #include <new>

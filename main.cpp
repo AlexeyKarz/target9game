@@ -9,8 +9,8 @@
  * start a new game or finish the game.
  * \author Aleksei Karzanov
  * \version   1.1.0
- * \date      03/2024-04/2024
- * \copyright University of Nicosia.
+ * \date      03/2024-05/2024
+ * \copyright University of Nicosia. The game was created by Dr Andreas Savva
 */
 
 // include the necessary libraries
@@ -21,10 +21,10 @@
 //#include <queue>
 //#include <set>
 //#include <chrono>
-#include "ClassesStack.h"
-#include "AutoWin.h"
-#include "GameFunctions.h"
-#include "GameState.cpp"
+#include "ClassesStack/ClassesStack.h"
+#include "AutoWin/AutoWin.h"
+#include "GameFunctions/GameFunctions.h"
+#include "AutoWin/GameStateStructure.cpp"
 
 using namespace std;
 //

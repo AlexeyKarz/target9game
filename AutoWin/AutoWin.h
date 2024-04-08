@@ -1,10 +1,14 @@
-//
-// Created by Karzanov Alexey on 08.04.2024.
-//
+/** \file
+ * \brief Header file for AutoWin.cpp
+ * This file contains the function prototypes for auto solving the game using BFS and Strategy.
+ * \author Aleksei Karzanov
+ * \version 1.0
+ * \date 2024
+ */
 
 #ifndef TARGET9_AUTOWIN_H
 #define TARGET9_AUTOWIN_H
-#include "ClassesStack.h"
+#include "../ClassesStack/ClassesStack.h"
 #include <vector>
 
 using namespace std;

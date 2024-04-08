@@ -1,10 +1,14 @@
 # ninja log v5
-482	524	1711625816316538056	target9	52d07f7ecdf6d829
-5	482	1711625816272628757	CMakeFiles/target9.dir/main.cpp.o	f9fea915116bd858
-0	76	1712564607463987155	build.ninja	cd4482a386213171
-5	367	1712566073586989816	CMakeFiles/target9.dir/ClassesStack.cpp.o	3bfcd448e9375592
-5	517	1712566073736591470	CMakeFiles/target9.dir/GameState.cpp.o	699bc2a3742c3a80
-5	613	1712566073831094119	CMakeFiles/target9.dir/main.cpp.o	f9fea915116bd858
-5	626	1712566073846351234	CMakeFiles/target9.dir/AutoWin.cpp.o	126619b87a0930c9
-10	366	1712566110271340349	CMakeFiles/target9.dir/GameFunctions.cpp.o	10c7d9229746ea7d
 366	517	1712566110422243795	target9	ce5949d643cc38
+5	613	1712566073831094119	CMakeFiles/target9.dir/main.cpp.o	f9fea915116bd858
+5	517	1712566073736591470	CMakeFiles/target9.dir/GameState.cpp.o	699bc2a3742c3a80
+0	76	1712567729616340249	build.ninja	cd4482a386213171
+10	366	1712566110271340349	CMakeFiles/target9.dir/GameFunctions.cpp.o	10c7d9229746ea7d
+5	626	1712566073846351234	CMakeFiles/target9.dir/AutoWin.cpp.o	126619b87a0930c9
+5	367	1712566073586989816	CMakeFiles/target9.dir/ClassesStack.cpp.o	3bfcd448e9375592
+12	204	1712567744066354885	CMakeFiles/target9.dir/ClassesStack/ClassesStack.cpp.o	80efb3b3dec2f16e
+11	315	1712567744176914913	CMakeFiles/target9.dir/AutoWin/GameStateStructure.cpp.o	a73c242f3ffa60ed
+12	394	1712567744255827278	CMakeFiles/target9.dir/GameFunctions/GameFunctions.cpp.o	91d11018f29083e2
+10	405	1712567744266412679	CMakeFiles/target9.dir/main.cpp.o	f9fea915116bd858
+12	428	1712567744288892777	CMakeFiles/target9.dir/AutoWin/AutoWin.cpp.o	8b273eab1c918
+428	582	1712567744443319041	target9	48052f124adc8bbd

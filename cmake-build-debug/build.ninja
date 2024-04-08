@@ -55,29 +55,29 @@ build CMakeFiles/target9.dir/main.cpp.o: CXX_COMPILER__target9_unscanned_Debug /
   OBJECT_DIR = CMakeFiles/target9.dir
   OBJECT_FILE_DIR = CMakeFiles/target9.dir
 
-build CMakeFiles/target9.dir/GameState.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/GameState.cpp || cmake_object_order_depends_target_target9
-  DEP_FILE = CMakeFiles/target9.dir/GameState.cpp.o.d
+build CMakeFiles/target9.dir/AutoWin/GameStateStructure.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/AutoWin/GameStateStructure.cpp || cmake_object_order_depends_target_target9
+  DEP_FILE = CMakeFiles/target9.dir/AutoWin/GameStateStructure.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/target9.dir
-  OBJECT_FILE_DIR = CMakeFiles/target9.dir
+  OBJECT_FILE_DIR = CMakeFiles/target9.dir/AutoWin
 
-build CMakeFiles/target9.dir/AutoWin.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/AutoWin.cpp || cmake_object_order_depends_target_target9
-  DEP_FILE = CMakeFiles/target9.dir/AutoWin.cpp.o.d
+build CMakeFiles/target9.dir/AutoWin/AutoWin.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/AutoWin/AutoWin.cpp || cmake_object_order_depends_target_target9
+  DEP_FILE = CMakeFiles/target9.dir/AutoWin/AutoWin.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/target9.dir
-  OBJECT_FILE_DIR = CMakeFiles/target9.dir
+  OBJECT_FILE_DIR = CMakeFiles/target9.dir/AutoWin
 
-build CMakeFiles/target9.dir/ClassesStack.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/ClassesStack.cpp || cmake_object_order_depends_target_target9
-  DEP_FILE = CMakeFiles/target9.dir/ClassesStack.cpp.o.d
+build CMakeFiles/target9.dir/ClassesStack/ClassesStack.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/ClassesStack/ClassesStack.cpp || cmake_object_order_depends_target_target9
+  DEP_FILE = CMakeFiles/target9.dir/ClassesStack/ClassesStack.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/target9.dir
-  OBJECT_FILE_DIR = CMakeFiles/target9.dir
+  OBJECT_FILE_DIR = CMakeFiles/target9.dir/ClassesStack
 
-build CMakeFiles/target9.dir/GameFunctions.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/GameFunctions.cpp || cmake_object_order_depends_target_target9
-  DEP_FILE = CMakeFiles/target9.dir/GameFunctions.cpp.o.d
+build CMakeFiles/target9.dir/GameFunctions/GameFunctions.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/GameFunctions/GameFunctions.cpp || cmake_object_order_depends_target_target9
+  DEP_FILE = CMakeFiles/target9.dir/GameFunctions/GameFunctions.cpp.o.d
   FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/target9.dir
-  OBJECT_FILE_DIR = CMakeFiles/target9.dir
+  OBJECT_FILE_DIR = CMakeFiles/target9.dir/GameFunctions
 
 
 # =============================================================================
@@ -87,7 +87,7 @@ build CMakeFiles/target9.dir/GameFunctions.cpp.o: CXX_COMPILER__target9_unscanne
 #############################################
 # Link the executable target9
 
-build target9: CXX_EXECUTABLE_LINKER__target9_Debug CMakeFiles/target9.dir/main.cpp.o CMakeFiles/target9.dir/GameState.cpp.o CMakeFiles/target9.dir/AutoWin.cpp.o CMakeFiles/target9.dir/ClassesStack.cpp.o CMakeFiles/target9.dir/GameFunctions.cpp.o
+build target9: CXX_EXECUTABLE_LINKER__target9_Debug CMakeFiles/target9.dir/main.cpp.o CMakeFiles/target9.dir/AutoWin/GameStateStructure.cpp.o CMakeFiles/target9.dir/AutoWin/AutoWin.cpp.o CMakeFiles/target9.dir/ClassesStack/ClassesStack.cpp.o CMakeFiles/target9.dir/GameFunctions/GameFunctions.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
   OBJECT_DIR = CMakeFiles/target9.dir
   POST_BUILD = :

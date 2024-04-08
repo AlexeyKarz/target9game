@@ -1,13 +1,17 @@
-//
-// Created by Karzanov Alexey on 08.04.2024.
-//
+/** \file AutoWin.cpp
+ *  \brief Implementation file for AutoWin.cpp
+ *  Contains the implementation of the functions for auto-solving the game.
+ *  \author Aleksei Karzanov
+ *  \version 1.0
+ *  \date 2024
+ */
 
 #include <queue>
 #include <set>
-#include "ClassesStack.h"
+#include "../ClassesStack/ClassesStack.h"
 #include "AutoWin.h"
-#include "GameFunctions.h"
-#include "GameState.cpp"
+#include "../GameFunctions/GameFunctions.h"
+#include "GameStateStructure.cpp"
 
 
 /** Function <code>copyGrid</code> copies the source grid to the destination grid

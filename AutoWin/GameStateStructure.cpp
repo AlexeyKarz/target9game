@@ -1,9 +1,14 @@
-//
-// Created by Karzanov Alexey on 08.04.2024.
-//
+/** \file
+ *  \brief Implementation file for GameState structure.
+ *  Contains the implementation of the GameState structure
+ *  that is used for auto-solving the game.
+ *  \author Aleksei Karzanov
+ *  \version 1.0
+ *  \date 2024
+ */
 
 #include <vector>
-#include "ClassesStack.h"
+#include "../ClassesStack/ClassesStack.h"
 using namespace std;
 
 /**
