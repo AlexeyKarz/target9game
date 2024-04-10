@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: target9
+# Project: target9game
 # Configurations: Debug
 # =============================================================================
 
@@ -40,61 +40,6 @@ include CMakeFiles/rules.ninja
 # Logical path to working directory; prefix for absolute paths.
 
 cmake_ninja_workdir = /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/
-# =============================================================================
-# Object build statements for EXECUTABLE target target9
-
-
-#############################################
-# Order-only phony target for target9
-
-build cmake_object_order_depends_target_target9: phony || CMakeFiles/target9.dir
-
-build CMakeFiles/target9.dir/main.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/main.cpp || cmake_object_order_depends_target_target9
-  DEP_FILE = CMakeFiles/target9.dir/main.cpp.o.d
-  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/target9.dir
-  OBJECT_FILE_DIR = CMakeFiles/target9.dir
-
-build CMakeFiles/target9.dir/AutoWin/GameStateStructure.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/AutoWin/GameStateStructure.cpp || cmake_object_order_depends_target_target9
-  DEP_FILE = CMakeFiles/target9.dir/AutoWin/GameStateStructure.cpp.o.d
-  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/target9.dir
-  OBJECT_FILE_DIR = CMakeFiles/target9.dir/AutoWin
-
-build CMakeFiles/target9.dir/AutoWin/AutoWin.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/AutoWin/AutoWin.cpp || cmake_object_order_depends_target_target9
-  DEP_FILE = CMakeFiles/target9.dir/AutoWin/AutoWin.cpp.o.d
-  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/target9.dir
-  OBJECT_FILE_DIR = CMakeFiles/target9.dir/AutoWin
-
-build CMakeFiles/target9.dir/ClassesStack/ClassesStack.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/ClassesStack/ClassesStack.cpp || cmake_object_order_depends_target_target9
-  DEP_FILE = CMakeFiles/target9.dir/ClassesStack/ClassesStack.cpp.o.d
-  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/target9.dir
-  OBJECT_FILE_DIR = CMakeFiles/target9.dir/ClassesStack
-
-build CMakeFiles/target9.dir/GameFunctions/GameFunctions.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/GameFunctions/GameFunctions.cpp || cmake_object_order_depends_target_target9
-  DEP_FILE = CMakeFiles/target9.dir/GameFunctions/GameFunctions.cpp.o.d
-  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/target9.dir
-  OBJECT_FILE_DIR = CMakeFiles/target9.dir/GameFunctions
-
-
-# =============================================================================
-# Link build statements for EXECUTABLE target target9
-
-
-#############################################
-# Link the executable target9
-
-build target9: CXX_EXECUTABLE_LINKER__target9_Debug CMakeFiles/target9.dir/main.cpp.o CMakeFiles/target9.dir/AutoWin/GameStateStructure.cpp.o CMakeFiles/target9.dir/AutoWin/AutoWin.cpp.o CMakeFiles/target9.dir/ClassesStack/ClassesStack.cpp.o CMakeFiles/target9.dir/GameFunctions/GameFunctions.cpp.o
-  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
-  OBJECT_DIR = CMakeFiles/target9.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  TARGET_FILE = target9
-  TARGET_PDB = target9.dbg
-
 
 #############################################
 # Utility command for edit_cache
@@ -118,8 +63,467 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/alexeyks/CLionProjects/datastruct/target9/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target target9
+
+
+#############################################
+# Order-only phony target for target9
+
+build cmake_object_order_depends_target_target9: phony || src/CMakeFiles/target9.dir
+
+build src/CMakeFiles/target9.dir/main.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/src/main.cpp || cmake_object_order_depends_target_target9
+  DEP_FILE = src/CMakeFiles/target9.dir/main.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = src/CMakeFiles/target9.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/target9.dir
+
+build src/CMakeFiles/target9.dir/AutoWin/AutoWin.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/src/AutoWin/AutoWin.cpp || cmake_object_order_depends_target_target9
+  DEP_FILE = src/CMakeFiles/target9.dir/AutoWin/AutoWin.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = src/CMakeFiles/target9.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/target9.dir/AutoWin
+
+build src/CMakeFiles/target9.dir/ClassesStack/ClassesStack.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/src/ClassesStack/ClassesStack.cpp || cmake_object_order_depends_target_target9
+  DEP_FILE = src/CMakeFiles/target9.dir/ClassesStack/ClassesStack.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = src/CMakeFiles/target9.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/target9.dir/ClassesStack
+
+build src/CMakeFiles/target9.dir/GameFunctions/GameFunctions.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/src/GameFunctions/GameFunctions.cpp || cmake_object_order_depends_target_target9
+  DEP_FILE = src/CMakeFiles/target9.dir/GameFunctions/GameFunctions.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = src/CMakeFiles/target9.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/target9.dir/GameFunctions
+
+build src/CMakeFiles/target9.dir/game_logic.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/src/game_logic.cpp || cmake_object_order_depends_target_target9
+  DEP_FILE = src/CMakeFiles/target9.dir/game_logic.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = src/CMakeFiles/target9.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/target9.dir
+
+build src/CMakeFiles/target9.dir/AutoWin/GameStateStruct.cpp.o: CXX_COMPILER__target9_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/src/AutoWin/GameStateStruct.cpp || cmake_object_order_depends_target_target9
+  DEP_FILE = src/CMakeFiles/target9.dir/AutoWin/GameStateStruct.cpp.o.d
+  FLAGS = -g -std=gnu++17 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  OBJECT_DIR = src/CMakeFiles/target9.dir
+  OBJECT_FILE_DIR = src/CMakeFiles/target9.dir/AutoWin
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target target9
+
+
+#############################################
+# Link the executable src/target9
+
+build src/target9: CXX_EXECUTABLE_LINKER__target9_Debug src/CMakeFiles/target9.dir/main.cpp.o src/CMakeFiles/target9.dir/AutoWin/AutoWin.cpp.o src/CMakeFiles/target9.dir/ClassesStack/ClassesStack.cpp.o src/CMakeFiles/target9.dir/GameFunctions/GameFunctions.cpp.o src/CMakeFiles/target9.dir/game_logic.cpp.o src/CMakeFiles/target9.dir/AutoWin/GameStateStruct.cpp.o
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  OBJECT_DIR = src/CMakeFiles/target9.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = src/target9
+  TARGET_PDB = target9.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build src/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/src && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build src/edit_cache: phony src/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build src/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/src && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake --regenerate-during-build -S/Users/alexeyks/CLionProjects/datastruct/target9 -B/Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build src/rebuild_cache: phony src/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build src/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build src/CMakeFiles/install.util: CUSTOM_COMMAND src/all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/src && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build src/install: phony src/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build src/CMakeFiles/install/local.util: CUSTOM_COMMAND src/all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/src && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build src/install/local: phony src/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build src/CMakeFiles/install/strip.util: CUSTOM_COMMAND src/all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/src && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build src/install/strip: phony src/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/alexeyks/CLionProjects/datastruct/target9/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target game_test
+
+
+#############################################
+# Order-only phony target for game_test
+
+build cmake_object_order_depends_target_game_test: phony || cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+
+build tests/CMakeFiles/game_test.dir/game_test.cpp.o: CXX_COMPILER__game_test_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/tests/game_test.cpp || cmake_object_order_depends_target_game_test
+  DEP_FILE = tests/CMakeFiles/game_test.dir/game_test.cpp.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/alexeyks/CLionProjects/datastruct/target9/tests/../src -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/include -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest
+  OBJECT_DIR = tests/CMakeFiles/game_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/game_test.dir
+
+build tests/CMakeFiles/game_test.dir/__/src/game_logic.cpp.o: CXX_COMPILER__game_test_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/src/game_logic.cpp || cmake_object_order_depends_target_game_test
+  DEP_FILE = tests/CMakeFiles/game_test.dir/__/src/game_logic.cpp.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/alexeyks/CLionProjects/datastruct/target9/tests/../src -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/include -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest
+  OBJECT_DIR = tests/CMakeFiles/game_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/game_test.dir/__/src
+
+build tests/CMakeFiles/game_test.dir/__/src/AutoWin/AutoWin.cpp.o: CXX_COMPILER__game_test_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/src/AutoWin/AutoWin.cpp || cmake_object_order_depends_target_game_test
+  DEP_FILE = tests/CMakeFiles/game_test.dir/__/src/AutoWin/AutoWin.cpp.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/alexeyks/CLionProjects/datastruct/target9/tests/../src -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/include -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest
+  OBJECT_DIR = tests/CMakeFiles/game_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/game_test.dir/__/src/AutoWin
+
+build tests/CMakeFiles/game_test.dir/__/src/AutoWin/GameStateStruct.cpp.o: CXX_COMPILER__game_test_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/src/AutoWin/GameStateStruct.cpp || cmake_object_order_depends_target_game_test
+  DEP_FILE = tests/CMakeFiles/game_test.dir/__/src/AutoWin/GameStateStruct.cpp.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/alexeyks/CLionProjects/datastruct/target9/tests/../src -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/include -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest
+  OBJECT_DIR = tests/CMakeFiles/game_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/game_test.dir/__/src/AutoWin
+
+build tests/CMakeFiles/game_test.dir/__/src/ClassesStack/ClassesStack.cpp.o: CXX_COMPILER__game_test_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/src/ClassesStack/ClassesStack.cpp || cmake_object_order_depends_target_game_test
+  DEP_FILE = tests/CMakeFiles/game_test.dir/__/src/ClassesStack/ClassesStack.cpp.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/alexeyks/CLionProjects/datastruct/target9/tests/../src -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/include -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest
+  OBJECT_DIR = tests/CMakeFiles/game_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/game_test.dir/__/src/ClassesStack
+
+build tests/CMakeFiles/game_test.dir/__/src/GameFunctions/GameFunctions.cpp.o: CXX_COMPILER__game_test_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/src/GameFunctions/GameFunctions.cpp || cmake_object_order_depends_target_game_test
+  DEP_FILE = tests/CMakeFiles/game_test.dir/__/src/GameFunctions/GameFunctions.cpp.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics
+  INCLUDES = -I/Users/alexeyks/CLionProjects/datastruct/target9/tests/../src -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/include -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest
+  OBJECT_DIR = tests/CMakeFiles/game_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/game_test.dir/__/src/GameFunctions
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target game_test
+
+
+#############################################
+# Link the executable tests/game_test
+
+build tests/game_test: CXX_EXECUTABLE_LINKER__game_test_Debug tests/CMakeFiles/game_test.dir/game_test.cpp.o tests/CMakeFiles/game_test.dir/__/src/game_logic.cpp.o tests/CMakeFiles/game_test.dir/__/src/AutoWin/AutoWin.cpp.o tests/CMakeFiles/game_test.dir/__/src/AutoWin/GameStateStruct.cpp.o tests/CMakeFiles/game_test.dir/__/src/ClassesStack/ClassesStack.cpp.o tests/CMakeFiles/game_test.dir/__/src/GameFunctions/GameFunctions.cpp.o | lib/libgtest.a lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  lib/libgtest.a
+  OBJECT_DIR = tests/CMakeFiles/game_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = tests/game_test
+  TARGET_PDB = game_test.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build tests/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build tests/edit_cache: phony tests/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build tests/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake --regenerate-during-build -S/Users/alexeyks/CLionProjects/datastruct/target9 -B/Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build tests/rebuild_cache: phony tests/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build tests/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build tests/CMakeFiles/install.util: CUSTOM_COMMAND tests/all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build tests/install: phony tests/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build tests/CMakeFiles/install/local.util: CUSTOM_COMMAND tests/all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build tests/install/local: phony tests/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build tests/CMakeFiles/install/strip.util: CUSTOM_COMMAND tests/all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build tests/install/strip: phony tests/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/alexeyks/CLionProjects/datastruct/target9/tests/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Order-only phony target for gtest
+
+build cmake_object_order_depends_target_gtest: phony || tests/googletest/CMakeFiles/gtest.dir
+
+build tests/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o: CXX_COMPILER__gtest_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/src/gtest-all.cc || cmake_object_order_depends_target_gtest
+  DEP_FILE = tests/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics  -DGTEST_HAS_PTHREAD=1
+  INCLUDES = -I/Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/include -I/Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest
+  OBJECT_DIR = tests/googletest/CMakeFiles/gtest.dir
+  OBJECT_FILE_DIR = tests/googletest/CMakeFiles/gtest.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Link the static library lib/libgtest.a
+
+build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug tests/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = tests/googletest/CMakeFiles/gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest.a
+  TARGET_PDB = gtest.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Order-only phony target for gtest_main
+
+build cmake_object_order_depends_target_gtest_main: phony || cmake_object_order_depends_target_gtest
+
+build tests/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o: CXX_COMPILER__gtest_main_unscanned_Debug /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/src/gtest_main.cc || cmake_object_order_depends_target_gtest_main
+  DEP_FILE = tests/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o.d
+  FLAGS = -g -std=gnu++14 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fcolor-diagnostics  -DGTEST_HAS_PTHREAD=1
+  INCLUDES = -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/include -isystem /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest
+  OBJECT_DIR = tests/googletest/CMakeFiles/gtest_main.dir
+  OBJECT_FILE_DIR = tests/googletest/CMakeFiles/gtest_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Link the static library lib/libgtest_main.a
+
+build lib/libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Debug tests/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o || lib/libgtest.a
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = tests/googletest/CMakeFiles/gtest_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest_main.a
+  TARGET_PDB = gtest_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build tests/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build tests/googletest/edit_cache: phony tests/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build tests/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake --regenerate-during-build -S/Users/alexeyks/CLionProjects/datastruct/target9 -B/Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build tests/googletest/rebuild_cache: phony tests/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build tests/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build tests/googletest/CMakeFiles/install.util: CUSTOM_COMMAND tests/googletest/all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build tests/googletest/install: phony tests/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build tests/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND tests/googletest/all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build tests/googletest/install/local: phony tests/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build tests/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND tests/googletest/all
+  COMMAND = cd /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build tests/googletest/install/strip: phony tests/googletest/CMakeFiles/install/strip.util
+
 # =============================================================================
 # Target aliases.
+
+build game_test: phony tests/game_test
+
+build gtest: phony lib/libgtest.a
+
+build gtest_main: phony lib/libgtest_main.a
+
+build libgtest.a: phony lib/libgtest.a
+
+build libgtest_main.a: phony lib/libgtest_main.a
+
+build target9: phony src/target9
 
 # =============================================================================
 # Folder targets.
@@ -129,7 +533,28 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug
 
-build all: phony target9
+build all: phony src/all tests/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/src
+
+build src/all: phony src/target9
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests
+
+build tests/all: phony tests/game_test tests/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests/googletest
+
+build tests/googletest/all: phony lib/libgtest.a lib/libgtest_main.a
 
 # =============================================================================
 # Built-in targets
@@ -138,14 +563,14 @@ build all: phony target9
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /Users/alexeyks/CLionProjects/datastruct/target9/CMakeLists.txt CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake /Users/alexeyks/CLionProjects/datastruct/target9/CMakeLists.txt /Users/alexeyks/CLionProjects/datastruct/target9/src/CMakeLists.txt /Users/alexeyks/CLionProjects/datastruct/target9/tests/CMakeLists.txt /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/CMakeLists.txt /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/cmake/Config.cmake.in /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/cmake/gtest.pc.in /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/cmake/gtest_main.pc.in /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /Users/alexeyks/CLionProjects/datastruct/target9/CMakeLists.txt CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake: phony
+build /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-AppleClang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-AppleClang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Apple-Clang.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/aarch64/share/cmake-3.27/Modules/WriteBasicConfigVersionFile.cmake /Users/alexeyks/CLionProjects/datastruct/target9/CMakeLists.txt /Users/alexeyks/CLionProjects/datastruct/target9/src/CMakeLists.txt /Users/alexeyks/CLionProjects/datastruct/target9/tests/CMakeLists.txt /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/CMakeLists.txt /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/cmake/Config.cmake.in /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/cmake/gtest.pc.in /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/cmake/gtest_main.pc.in /Users/alexeyks/CLionProjects/datastruct/target9/tests/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.27.8/CMakeCCompiler.cmake CMakeFiles/3.27.8/CMakeCXXCompiler.cmake CMakeFiles/3.27.8/CMakeSystem.cmake: phony
 
 
 #############################################

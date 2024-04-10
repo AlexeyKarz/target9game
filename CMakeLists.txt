@@ -1,14 +1,10 @@
-cmake_minimum_required(VERSION 3.27)
-project(target9)
+cmake_minimum_required(VERSION 3.14)  # Minimum version of CMake required
+project(target9game)  # Name of the project
 
-set(CMAKE_CXX_STANDARD 17)
+# Specify the C++ standard
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(target9 main.cpp
-        ClassesStack/ClassesStack.h
-        AutoWin/AutoWin.h
-        AutoWin/GameStateStructure.cpp
-        AutoWin/AutoWin.cpp
-        ClassesStack/ClassesStack.cpp
-        GameFunctions/GameFunctions.h
-        GameFunctions/GameFunctions.cpp
-)
+# Add subdirectories
+add_subdirectory(src)  # source files
+add_subdirectory(tests)  # test files
