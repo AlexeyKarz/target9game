@@ -5,6 +5,9 @@ project(target9game)  # Name of the project
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Set the location of the spdlog header files
+#include_directories(${PROJECT_SOURCE_DIR}/spdlog)
+
 # Add subdirectories
 add_subdirectory(src)  # source files
 add_subdirectory(tests)  # test files

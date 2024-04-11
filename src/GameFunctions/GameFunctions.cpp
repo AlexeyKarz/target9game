@@ -68,6 +68,7 @@ void makeReverseMove(int grid[GRID_SIZE][GRID_SIZE], const Move move) {
  */
 void setDifficulty(int grid[GRID_SIZE][GRID_SIZE]) {
     cout << "Enter the difficulty level (1-9): ";
+
     int difficulty;
     do {
         cin >> difficulty;

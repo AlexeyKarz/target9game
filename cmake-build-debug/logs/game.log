@@ -1,0 +1,32 @@
+[2024-04-11 17:27:38.083] [game_logger] [info] The game has started.
+[2024-04-11 17:27:40.377] [game_logger] [info] The game has started with the following play field: Row0: 7, 7, 6, Row:1 7, 8, 7, Row:2 8, 9, 7
+[2024-04-11 17:28:32.691] [game_logger] [info] The user has made a move: row 0, column 2
+[2024-04-11 17:28:40.518] [game_logger] [info] The user has made a move: row 0, column 0
+[2024-04-11 17:28:44.513] [game_logger] [info] The user has made a move: row 1, column 2
+[2024-04-11 17:28:44.513] [game_logger] [info] The user has won the game.
+[2024-04-11 17:28:46.123] [game_logger] [info] The game has ended.
+[2024-04-11 17:29:18.464] [game_logger] [info] The game has started.
+[2024-04-11 17:29:25.204] [game_logger] [info] The game has started with the following play field: Row0: 5, 2, 5, Row:1 3, 6, 7, Row:2 4, 6, 8
+[2024-04-11 17:29:27.454] [game_logger] [info] The user has made a move: row 2, column 2
+[2024-04-11 17:30:02.948] [game_logger] [info] The game has been solved using the BFS algorithm.
+[2024-04-11 17:30:02.948] [game_logger] [info] The game has been solved in 16 moves.
+[2024-04-11 17:32:29.496] [game_logger] [info] The user has undone the move.
+[2024-04-11 17:32:39.151] [game_logger] [info] The user has made a move: row 1, column 1
+[2024-04-11 17:32:44.076] [game_logger] [info] The user has restarted the game.
+[2024-04-11 17:32:44.076] [game_logger] [info] The game has started with the following play field: 9, 9, 8, 8, 8, 8, 9, 9, 8
+[2024-04-11 17:32:51.771] [game_logger] [info] The user has made a move: row 1, column 2
+[2024-04-11 17:32:51.771] [game_logger] [info] The user has won the game.
+[2024-04-11 17:32:56.419] [game_logger] [info] The user has restarted the game.
+[2024-04-11 17:32:56.419] [game_logger] [info] The game has started with the following play field: 6, 9, 8, 5, 6, 6, 6, 8, 7
+[2024-04-11 17:32:58.639] [game_logger] [info] The game has been solved using the strategy algorithm.
+[2024-04-11 17:32:58.639] [game_logger] [info] The game has been solved in 4 moves.
+[2024-04-11 17:33:00.619] [game_logger] [info] The game has ended.
+[2024-04-11 17:34:09.357] [game_logger] [info] The game has started.
+[2024-04-11 17:34:11.625] [game_logger] [info] The game has started with the following play field: Row0: 7, 7, 8, Row:1 7, 6, 7, Row:2 8, 7, 9
+[2024-04-11 17:34:14.078] [game_logger] [info] The game has been solved using the strategy algorithm.
+[2024-04-11 17:34:14.078] [game_logger] [info] The game has been solved in 3 moves.
+[2024-04-11 17:34:18.131] [game_logger] [info] The user has restarted the game.
+[2024-04-11 17:34:18.131] [game_logger] [info] The game has started with the following play field: Row0: 8, 9, 9, Row:1 8, 9, 9, Row:2 8, 8, 8
+[2024-04-11 17:34:21.068] [game_logger] [info] The user has made a move: row 2, column 0
+[2024-04-11 17:34:21.068] [game_logger] [info] The user has won the game.
+[2024-04-11 17:34:22.322] [game_logger] [info] The game has ended.

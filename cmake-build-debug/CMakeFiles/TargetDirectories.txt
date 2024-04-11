@@ -11,6 +11,13 @@
 /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/src/CMakeFiles/install.dir
 /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/src/CMakeFiles/install/local.dir
 /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/src/CMakeFiles/install/strip.dir
+/Users/alexeyks/CLionProjects/datastruct/target9/spdlog/build/CMakeFiles/spdlog.dir
+/Users/alexeyks/CLionProjects/datastruct/target9/spdlog/build/CMakeFiles/edit_cache.dir
+/Users/alexeyks/CLionProjects/datastruct/target9/spdlog/build/CMakeFiles/rebuild_cache.dir
+/Users/alexeyks/CLionProjects/datastruct/target9/spdlog/build/CMakeFiles/list_install_components.dir
+/Users/alexeyks/CLionProjects/datastruct/target9/spdlog/build/CMakeFiles/install.dir
+/Users/alexeyks/CLionProjects/datastruct/target9/spdlog/build/CMakeFiles/install/local.dir
+/Users/alexeyks/CLionProjects/datastruct/target9/spdlog/build/CMakeFiles/install/strip.dir
 /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests/CMakeFiles/game_test.dir
 /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests/CMakeFiles/edit_cache.dir
 /Users/alexeyks/CLionProjects/datastruct/target9/cmake-build-debug/tests/CMakeFiles/rebuild_cache.dir
