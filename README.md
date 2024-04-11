@@ -37,6 +37,12 @@ After each move, the program checks if the user has won the game. If the user ha
 
 The program includes a suite of unit tests to ensure the game logic is working correctly. These tests cover the game solving algorithm, the undo and redo functionality, the victory check, and the game restart functionality.
 
+## Logging
+The "Target 9" game uses the spdlog library for logging. The logger is set up in the `setup_logger()` function, which creates a rotating file sink. This sink is configured to create a new log file once the current one reaches 5MB in size, and it keeps the last 3 log files.  The logger is used throughout the game to log various events. **These include: The start and end of the game , User moves, Invalid inputs, Game restarts.**
+
+The initial state of the game and any changes to the game state
+The logger is set to the debug level, meaning it will log all messages with a severity of debug or higher. This includes info, warning, error, and critical messages. The log files are stored in the `../cmake-build-debug/logs/game.log` directory.  To view the logs, open the log files in any text editor.
+
 ## Running the Program
 
 To run the program, compile the `src/main.cpp` file and execute the resulting binary. To run the tests, compile the `tests/game_test.cpp` file and execute the resulting binary.
