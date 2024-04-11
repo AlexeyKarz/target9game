@@ -2,24 +2,48 @@
 
 ## Overview
 
-The Target 9 Game is a command-line based game developed in C++. The game starts with an initial configuration of digits that is set on the difficulty level selected by the user. The user’s target is to change all of them to 9 in the minimum number of moves. The interaction with the game is done through the menu in the command line, which allows to make moves using row and column indexes, undo and redo moves, start a new game or finish the game.
+The Target 9 Game is a command-line based game developed in C++. The game starts with an initial configuration of digits that is set on the difficulty level selected by the user. The user’s target is to change all of them to 9 in the minimum number of moves (the move suggests choosing a cell so all numbers in cell's column and row will be incremented). The interaction with the game is done through the menu in the command line, which allows to make moves using row and column indexes, undo and redo moves, start a new game, auto-solve it or finish the game. 
 
-## Getting Started
+## File Structure
 
-### Prerequisites
+The program consists of two main files:
 
-- A C++ compiler (GCC recommended)
+- `src/main.cpp`: This is the main file of the program where the game logic is implemented.
+- `tests/game_test.cpp`: This file contains the unit tests for the game logic.
 
-### Installation
+## Main Components
 
-1. Clone the repository to your local machine.
-2. Navigate to the project directory.
-3. Compile the `main.cpp` file using your C++ compiler.
-4. Run the compiled file to start the game.
+### Main Game Loop
 
-## Usage
+The main game loop is where the user interacts with the game. The user is presented with a menu of options to choose from. These options include making a move, undoing a move, redoing a move, restarting the game, solving the game, and quitting the game.
 
-The game starts by asking the user to set the difficulty level. The difficulty level determines the number of random moves made at the beginning of the game. The user can then make moves, undo moves, redo moves, restart the game, or quit the game through the command-line menu.
+### Move Validation
+
+Before a move is made, it is validated to ensure it is within the acceptable range. If the move is not valid, the user is prompted to enter a valid move.
+
+### Game Solving
+
+The game can be solved automatically using two different strategies. If the game is in its initial state, a heuristic search strategy is used. If the game is not in its initial state, an exhaustive search strategy (BFS) is used.
+
+### Undo and Redo
+
+The program keeps a history of moves made by the user. This allows the user to undo and redo moves. When a move is undone, it is stored in a separate stack of cancelled moves. When a move is redone, it is moved back to the history stack.
+
+### Victory Check
+
+After each move, the program checks if the user has won the game. If the user has won, they are congratulated and asked if they want to play again.
+
+## Testing
+
+The program includes a suite of unit tests to ensure the game logic is working correctly. These tests cover the game solving algorithm, the undo and redo functionality, the victory check, and the game restart functionality.
+
+## Running the Program
+
+To run the program, compile the `src/main.cpp` file and execute the resulting binary. To run the tests, compile the `tests/game_test.cpp` file and execute the resulting binary.
+
+## Conclusion
+
+This game program is a fun and challenging puzzle game. It includes a variety of features to enhance the user experience, including move validation, automatic game solving, undo and redo functionality, and a victory check. The program is thoroughly tested to ensure the game logic is working correctly.
 
 ## Contributing
 
