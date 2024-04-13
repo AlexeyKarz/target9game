@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Target 9 Game is a command-line based game developed in C++. The game starts with an initial configuration of digits that is set on the difficulty level selected by the user. The user’s target is to change all of them to 9 in the minimum number of moves (the move suggests choosing a cell so all numbers in cell's column and row will be incremented). The interaction with the game is done through the menu in the command line, which allows to make moves using row and column indexes, undo and redo moves, start a new game, auto-solve it or finish the game. 
+The Target 9 Game is a command-line based game developed in C++. The game starts with an initial configuration of digits that is set on the difficulty level selected by the user. The user’s target is to change all of them to 9 in the minimum number of moves (the move suggests choosing a cell so all numbers in the cell's column and row will be incremented). The interaction with the game is done through the menu in the command line, which allows one to make moves using row and column indexes, undo and redo moves, start a new game, auto-solve it, or finish the game. 
 
 ## File Structure
 
@@ -38,7 +38,7 @@ After each move, the program checks if the user has won the game. If the user ha
 The program includes a suite of unit tests to ensure the game logic is working correctly. These tests cover the game solving algorithm, the undo and redo functionality, the victory check, and the game restart functionality.
 
 ## Logging
-The "Target 9" game uses the spdlog library for logging. The logger is set up in the `setup_logger()` function, which creates a rotating file sink. This sink is configured to create a new log file once the current one reaches 5MB in size, and it keeps the last 3 log files.  The logger is used throughout the game to log various events. **These include: The start and end of the game , User moves, Invalid inputs, Game restarts.**
+The "Target 9" game uses the spdlog library for logging. The logger is set up in the `setup_logger()` function, which creates a rotating file sink. This sink is configured to create a new log file once the current one reaches 5MB in size, and it keeps the last 3 log files.  The logger is used throughout the game to log various events. **These include: The start and end of the game, User moves, Invalid inputs, Game restarts.**
 
 The initial state of the game and any changes to the game state
 The logger is set to the debug level, meaning it will log all messages with a severity of debug or higher. This includes info, warning, error, and critical messages. The log files are stored in the `../cmake-build-debug/logs/game.log` directory.  To view the logs, open the log files in any text editor.
@@ -65,4 +65,4 @@ Aleksei Karzanov - [GitHub](https://github.com/AlexeyKarz)
 
 ## Acknowledgements
 
-- The game was created by Dr Andreas Savva, the professor in the University of Nicosia.
+- The game was created by Dr Andreas Savva, a professor at the University of Nicosia.
