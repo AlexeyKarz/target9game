@@ -4,6 +4,8 @@
 
 The Target 9 Game is a command-line based game developed in C++. The game starts with an initial configuration of digits that is set on the difficulty level selected by the user. The user’s target is to change all of them to 9 in the minimum number of moves (the move suggests choosing a cell so all numbers in cell's column and row will be incremented). The interaction with the game is done through the menu in the command line, which allows to make moves using row and column indexes, undo and redo moves, start a new game, auto-solve it or finish the game. 
 
+***IMPORTANT NOTE***: *If you found this repository, and you are a student of the University of Nicosia, who was assigned to complete this project, please, do not copy the code. It is a violation of the University's Academic Integrity policy. You can use my code as a reference, but do not copy it. It will not help you learn and might not pass the plagiarism check.*
+
 ## File Structure
 
 The program consists of two main files:
@@ -33,7 +35,7 @@ The program keeps a history of moves made by the user. This allows the user to u
 
 After each move, the program checks if the user has won the game. If the user has won, they are congratulated and asked if they want to play again.
 
-## Testing
+### Testing
 
 The program includes a suite of unit tests to ensure the game logic is working correctly. These tests cover the game solving algorithm, the undo and redo functionality, the victory check, and the game restart functionality.
 
